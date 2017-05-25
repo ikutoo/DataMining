@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KNN", "KNN\KNN.vcxproj", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bayesian", "Bayesian\Bayesian.vcxproj", "{08CA4F13-6DE6-4E59-8382-FD4F3C348D12}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{4324E084-3260-4268-A3F2-5B72F9182102}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -29,6 +31,14 @@ Global
 		{08CA4F13-6DE6-4E59-8382-FD4F3C348D12}.Release|Win32.Build.0 = Release|Win32
 		{08CA4F13-6DE6-4E59-8382-FD4F3C348D12}.Release|x64.ActiveCfg = Release|x64
 		{08CA4F13-6DE6-4E59-8382-FD4F3C348D12}.Release|x64.Build.0 = Release|x64
+		{4324E084-3260-4268-A3F2-5B72F9182102}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4324E084-3260-4268-A3F2-5B72F9182102}.Debug|Win32.Build.0 = Debug|Win32
+		{4324E084-3260-4268-A3F2-5B72F9182102}.Debug|x64.ActiveCfg = Debug|x64
+		{4324E084-3260-4268-A3F2-5B72F9182102}.Debug|x64.Build.0 = Debug|x64
+		{4324E084-3260-4268-A3F2-5B72F9182102}.Release|Win32.ActiveCfg = Release|Win32
+		{4324E084-3260-4268-A3F2-5B72F9182102}.Release|Win32.Build.0 = Release|Win32
+		{4324E084-3260-4268-A3F2-5B72F9182102}.Release|x64.ActiveCfg = Release|x64
+		{4324E084-3260-4268-A3F2-5B72F9182102}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
