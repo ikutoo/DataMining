@@ -41,6 +41,7 @@ bool search(float list[], float x, int k);
 int main() {
 	srand(time(0));
 
+	clock_t startTime = clock();
 	vector<SData> trainData;
 	vector<SData> testData;
 
@@ -70,7 +71,9 @@ int main() {
 	}
 
 	cout << "预测准确率为：" << (float)cnt / testData.size() << endl;
+	clock_t endTime = clock();
 
+	cout << "用时" << (float)(endTime - startTime) / CLOCKS_PER_SEC;
 	return 0;
 }
 
