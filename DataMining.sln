@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BPNetwork", "BPNetwork\BPNetwork.vcxproj", "{D50A69C5-C48A-409B-9C55-DB50C18F49F6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BPNetwork2", "BPNetwork2\BPNetwork2.vcxproj", "{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -49,6 +51,14 @@ Global
 		{D50A69C5-C48A-409B-9C55-DB50C18F49F6}.Release|Win32.Build.0 = Release|Win32
 		{D50A69C5-C48A-409B-9C55-DB50C18F49F6}.Release|x64.ActiveCfg = Release|x64
 		{D50A69C5-C48A-409B-9C55-DB50C18F49F6}.Release|x64.Build.0 = Release|x64
+		{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}.Debug|Win32.Build.0 = Debug|Win32
+		{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}.Debug|x64.ActiveCfg = Debug|x64
+		{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}.Debug|x64.Build.0 = Debug|x64
+		{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}.Release|Win32.ActiveCfg = Release|Win32
+		{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}.Release|Win32.Build.0 = Release|Win32
+		{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}.Release|x64.ActiveCfg = Release|x64
+		{8031524E-6665-4B81-B9F6-7E7B1A1C82EB}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

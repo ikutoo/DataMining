@@ -47,8 +47,8 @@ int main() {
 
 	readData(trainData, testData);
 	for (int i = 0; i < 3; ++i) {
-		//thresholds[i] = CaculateCValue(i, trainData, testData);
-		thresholds[i] = 0.5;
+		thresholds[i] = CaculateCValue(i, trainData, testData);
+		//thresholds[i] = 0.5;
 	}
 
 	discretization(trainData);

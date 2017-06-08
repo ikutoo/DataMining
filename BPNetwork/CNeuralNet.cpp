@@ -3,11 +3,11 @@
 //*************************** methods for Neuron **********************
 //
 //---------------------------------------------------------------------
-SNeuron::SNeuron(int NumInputs): m_NumInputs(NumInputs+1)
-											
+SNeuron::SNeuron(int NumInputs) : m_NumInputs(NumInputs + 1)
+
 {
 	//we need an additional weight for the bias hence the +1
-	for (int i=0; i<NumInputs+1; ++i)
+	for (int i = 0; i < NumInputs + 1; ++i)
 	{
 		//set up the weights with an initial random value
 		m_vecWeight.push_back(RandomClamped());
@@ -20,10 +20,10 @@ SNeuron::SNeuron(int NumInputs): m_NumInputs(NumInputs+1)
 //	ctor creates a layer of neurons of the required size by calling the 
 //	SNeuron ctor the rqd number of times
 //-----------------------------------------------------------------------
-SNeuronLayer::SNeuronLayer(int NumNeurons, 
-                           int NumInputsPerNeuron):	m_NumNeurons(NumNeurons)
+SNeuronLayer::SNeuronLayer(int NumNeurons,
+	int NumInputsPerNeuron) : m_NumNeurons(NumNeurons)
 {
-	for (int i=0; i<NumNeurons; ++i)
+	for (int i = 0; i < NumNeurons; ++i)
 		m_vecNeurons.push_back(SNeuron(NumInputsPerNeuron));
 }
 
@@ -33,12 +33,12 @@ SNeuronLayer::SNeuronLayer(int NumNeurons,
 //
 //	creates a ANN based on the default values in params.ini
 //-----------------------------------------------------------------------
-CNeuralNet::CNeuralNet() 
+CNeuralNet::CNeuralNet()
 {
-	m_NumInputs	          =	CParams::iNumInputs;
-	m_NumOutputs		      =	CParams::iNumOutputs;
-	m_NumHiddenLayers	    =	CParams::iNumHidden;
-	m_NeuronsPerHiddenLyr =	CParams::iNeuronsPerHiddenLayer;
+	m_NumInputs = CParams::iNumInputs;
+	m_NumOutputs = CParams::iNumOutputs;
+	m_NumHiddenLayers = CParams::iNumHidden;
+	m_NeuronsPerHiddenLyr = CParams::iNeuronsPerHiddenLayer;
 
 	CreateNet();
 }
@@ -54,23 +54,23 @@ void CNeuralNet::CreateNet()
 	if (m_NumHiddenLayers > 0)
 	{
 		//create first hidden layer
-	  m_vecLayers.push_back(SNeuronLayer(m_NeuronsPerHiddenLyr, m_NumInputs));
-    
-    for (int i=0; i<m_NumHiddenLayers-1; ++i)
-    {
-			m_vecLayers.push_back(SNeuronLayer(m_NeuronsPerHiddenLyr,
-                                         m_NeuronsPerHiddenLyr));
-    }
+		m_vecLayers.push_back(SNeuronLayer(m_NeuronsPerHiddenLyr, m_NumInputs));
 
-    //create output layer
-	  m_vecLayers.push_back(SNeuronLayer(m_NumOutputs, m_NeuronsPerHiddenLyr));
+		for (int i = 0; i < m_NumHiddenLayers - 1; ++i)
+		{
+			m_vecLayers.push_back(SNeuronLayer(m_NeuronsPerHiddenLyr,
+				m_NeuronsPerHiddenLyr));
+		}
+
+		//create output layer
+		m_vecLayers.push_back(SNeuronLayer(m_NumOutputs, m_NeuronsPerHiddenLyr));
 	}
 
-  else
-  {
-	  //create output layer
-	  m_vecLayers.push_back(SNeuronLayer(m_NumOutputs, m_NumInputs));
-  }
+	else
+	{
+		//create output layer
+		m_vecLayers.push_back(SNeuronLayer(m_NumOutputs, m_NumInputs));
+	}
 }
 
 //---------------------------------GetWeights-----------------------------
@@ -82,16 +82,16 @@ vector<double> CNeuralNet::GetWeights() const
 {
 	//this will hold the weights
 	vector<double> weights;
-	
+
 	//for each layer
-	for (int i=0; i<m_NumHiddenLayers + 1; ++i)
+	for (int i = 0; i < m_NumHiddenLayers + 1; ++i)
 	{
 
 		//for each neuron
-		for (int j=0; j<m_vecLayers[i].m_NumNeurons; ++j)
+		for (int j = 0; j < m_vecLayers[i].m_NumNeurons; ++j)
 		{
 			//for each weight
-			for (int k=0; k<m_vecLayers[i].m_vecNeurons[j].m_NumInputs; ++k)
+			for (int k = 0; k < m_vecLayers[i].m_vecNeurons[j].m_NumInputs; ++k)
 			{
 				weights.push_back(m_vecLayers[i].m_vecNeurons[j].m_vecWeight[k]);
 			}
@@ -110,16 +110,16 @@ vector<double> CNeuralNet::GetWeights() const
 void CNeuralNet::PutWeights(vector<double> &weights)
 {
 	int cWeight = 0;
-	
+
 	//for each layer
-	for (int i=0; i<m_NumHiddenLayers + 1; ++i)
+	for (int i = 0; i < m_NumHiddenLayers + 1; ++i)
 	{
 
 		//for each neuron
-		for (int j=0; j<m_vecLayers[i].m_NumNeurons; ++j)
+		for (int j = 0; j < m_vecLayers[i].m_NumNeurons; ++j)
 		{
 			//for each weight
-			for (int k=0; k<m_vecLayers[i].m_vecNeurons[j].m_NumInputs; ++k)
+			for (int k = 0; k < m_vecLayers[i].m_vecNeurons[j].m_NumInputs; ++k)
 			{
 				m_vecLayers[i].m_vecNeurons[j].m_vecWeight[k] = weights[cWeight++];
 			}
@@ -138,18 +138,18 @@ int CNeuralNet::GetNumberOfWeights() const
 {
 
 	int weights = 0;
-	
+
 	//for each layer
-	for (int i=0; i<m_NumHiddenLayers + 1; ++i)
+	for (int i = 0; i < m_NumHiddenLayers + 1; ++i)
 	{
 
 		//for each neuron
-		for (int j=0; j<m_vecLayers[i].m_NumNeurons; ++j)
+		for (int j = 0; j < m_vecLayers[i].m_NumNeurons; ++j)
 		{
 			//for each weight
-			for (int k=0; k<m_vecLayers[i].m_vecNeurons[j].m_NumInputs; ++k)
-			
-				weights++;			
+			for (int k = 0; k < m_vecLayers[i].m_vecNeurons[j].m_NumInputs; ++k)
+
+				weights++;
 		}
 	}
 
@@ -167,52 +167,52 @@ vector<double> CNeuralNet::Update(vector<double> &inputs)
 	vector<double> outputs;
 
 	int cWeight = 0;
-	
+
 	//first check that we have the correct amount of inputs
 	if (inputs.size() != m_NumInputs)
-  {
+	{
 		//just return an empty vector if incorrect.
 		return outputs;
-  }
-	
+	}
+
 	//For each layer....
-	for (int i=0; i<m_NumHiddenLayers + 1; ++i)
+	for (int i = 0; i < m_NumHiddenLayers + 1; ++i)
 	{
-		
-		if ( i > 0 )
-    {
+
+		if (i > 0)
+		{
 			inputs = outputs;
-    }
+		}
 
 		outputs.clear();
-		
+
 		cWeight = 0;
 
 		//for each neuron sum the (inputs * corresponding weights).Throw 
 		//the total at our sigmoid function to get the output.
-		for (int j=0; j<m_vecLayers[i].m_NumNeurons; ++j)
+		for (int j = 0; j < m_vecLayers[i].m_NumNeurons; ++j)
 		{
 			double netinput = 0;
 
 			int	NumInputs = m_vecLayers[i].m_vecNeurons[j].m_NumInputs;
-			
+
 			//for each weight
-			for (int k=0; k<NumInputs - 1; ++k)
+			for (int k = 0; k < NumInputs - 1; ++k)
 			{
 				//sum the weights x inputs
-				netinput += m_vecLayers[i].m_vecNeurons[j].m_vecWeight[k] * 
-                    inputs[cWeight++];
+				netinput += m_vecLayers[i].m_vecNeurons[j].m_vecWeight[k] *
+					inputs[cWeight++];
 			}
 
 			//add in the bias
-			netinput += m_vecLayers[i].m_vecNeurons[j].m_vecWeight[NumInputs-1] * 
-                  CParams::dBias;
+			netinput += m_vecLayers[i].m_vecNeurons[j].m_vecWeight[NumInputs - 1] *
+				CParams::dBias;
 
 			//we can store the outputs from each layer as we generate them. 
-      //The combined activation is first filtered through the sigmoid 
-      //function
+	  //The combined activation is first filtered through the sigmoid 
+	  //function
 			outputs.push_back(Sigmoid(netinput,
-                                CParams::dActivationResponse));
+				CParams::dActivationResponse));
 
 			cWeight = 0;
 		}
@@ -226,7 +226,7 @@ vector<double> CNeuralNet::Update(vector<double> &inputs)
 //------------------------------------------------------------------------
 double CNeuralNet::Sigmoid(double netinput, double response)
 {
-	return ( 1 / ( 1 + exp(-netinput / response)));
+	return (1 / (1 + exp(-netinput / response)));
 }
 
 
@@ -239,21 +239,21 @@ vector<int> CNeuralNet::CalculateSplitPoints() const
 {
 	vector<int> SplitPoints;
 
-  int WeightCounter = 0;
-	
+	int WeightCounter = 0;
+
 	//for each layer
-	for (int i=0; i<m_NumHiddenLayers + 1; ++i)
+	for (int i = 0; i < m_NumHiddenLayers + 1; ++i)
 	{
 		//for each neuron
-		for (int j=0; j<m_vecLayers[i].m_NumNeurons; ++j)
+		for (int j = 0; j < m_vecLayers[i].m_NumNeurons; ++j)
 		{
 			//for each weight
-			for (int k=0; k<m_vecLayers[i].m_vecNeurons[j].m_NumInputs; ++k)
-      {
-				++WeightCounter;			
-      }
+			for (int k = 0; k < m_vecLayers[i].m_vecNeurons[j].m_NumInputs; ++k)
+			{
+				++WeightCounter;
+			}
 
-      SplitPoints.push_back(WeightCounter - 1);
+			SplitPoints.push_back(WeightCounter - 1);
 		}
 	}
 
