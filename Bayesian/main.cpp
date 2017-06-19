@@ -73,7 +73,7 @@ int main() {
 	cout << "预测准确率为：" << (float)cnt / testData.size() << endl;
 	clock_t endTime = clock();
 
-	cout << "用时" << (float)(endTime - startTime) / CLOCKS_PER_SEC;
+	cout << "用时" << 1000 * (float)(endTime - startTime) / CLOCKS_PER_SEC << "ms" << endl;
 	return 0;
 }
 

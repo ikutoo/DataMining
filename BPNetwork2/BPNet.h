@@ -9,8 +9,8 @@
 #define HIDDEN_NUM 4	  //定义隐藏单元个数
 #define NUM      10       //每层的最多节点数  
 
-#define ITERS    100000     //最大迭代次数  
-#define ETA   0.0001   //学习率  
+#define ITERS    10000     //最大迭代次数  
+#define ETA   0.01   //学习率  
 #define ACCU     0.005    //每次迭代允许的误差  
 
 #define Type double  
@@ -28,6 +28,7 @@ class BPNet {
 public:
 	BPNet();
 	void Train(const vector<Data> _data);
+	void Train2(const vector<Data> _data);
 	void Test(const vector<Data> _data);
 	vector<Type> ForeCast(const vector<Type>);
 

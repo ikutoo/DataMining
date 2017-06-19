@@ -35,6 +35,32 @@ void BPNet::Train(const vector<Data> _data)
 	cout << "结束训练..." << endl;
 }
 
+//开始进行训练-随机梯度下降
+void BPNet::Train2(const vector<Data> _data)
+{
+	data = _data;
+	int num = data.size();
+
+	cout << "开始训练..." << endl;
+	for (int iter = 0; iter <= ITERS; iter++)
+	{
+		int cnt = rand() % in_num;
+
+		//第一层输入节点赋值  
+		for (int i = 0; i < in_num; i++)
+			x[0][i] = data.at(cnt).x[i];
+		ForwardTransfer();
+		ReverseTransfer(cnt);
+
+		cout << "第" << iter << "次迭代：";
+
+		Type accu = GetAccu();
+		cout << "样本误差为：" << accu << endl;
+		if (accu < ACCU) break;
+	}
+	cout << "结束训练..." << endl;
+}
+
 //根据训练好的网络来预测输出值  
 vector<Type> BPNet::ForeCast(const vector<Type> data)
 {
@@ -172,7 +198,7 @@ void BPNet::UpdateNetWork()
 //计算Sigmoid函数的值  
 Type BPNet::Sigmoid(const Type x)
 {
-	return 1 / (1 + exp(-x / 1));
+	return 1 / (1 + exp(-x));
 }
 
 //开始进行测试

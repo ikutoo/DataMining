@@ -30,7 +30,8 @@ int main()
 	}
 
 	BPNet *bpNet = new BPNet();
-	bpNet->Train(trainData);
+	//bpNet->Train(trainData);
+	bpNet->Train2(trainData);
 	bpNet->Test(testData);
 
 	return 0;
